@@ -15,7 +15,7 @@ textile_ext:   textile
 pygments: true
 
 # url: http://jeffreylarrimore.com
-baseurl: /
+# baseurl: /
 assets: assets/
 relative_permalinks: false
 permalink: pretty
