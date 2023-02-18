@@ -2,6 +2,7 @@
 # $ sass --watch assets/_scss:assets/css
   
 name: 'Spry Elephant'
+title: 'Spry Elephant'
 tagline: 'Development'
 email: ''
 phone: ''
@@ -12,7 +13,7 @@ linkedin: 'daveclem'
 markdown: rdiscount
 markdown_ext:  markdown,mkd,mkdn,md
 textile_ext:   textile
-pygments: true
+highlighter: pygments
 
 # url: http://jeffreylarrimore.com
 seurl: /sprywebsite/
