@@ -1,0 +1,372 @@
+/* --- Master Overrides --- */
+* {
+    margin:0;
+    padding:0;
+}
+html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height:100%;
+    width:100%;
+    @extend .box-bdr;
+}
+a { @extend .no-dec; }
+
+/* --- background cover ---------------------- */
+.bg-200 { @include background-size(200%); }
+.bg-150 { @include background-size(150%); }
+.bg-100 { @include background-size(100%); }
+.bg-50 { @include background-size(50%); }
+.bg-cover { @include background-size(cover); }
+.bg-contain { @include background-size(contain); }
+
+/* --- background attachment ---------------------- */
+.bg-scroll { background-attachment:scroll; }
+.bg-fixed { background-attachment:fixed; }
+.bg-local { background-attachment:local; }
+
+/* --- background repeat ---------------------- */
+.bg-repeat { background-repeat:repeat; }
+.bg-repeat-x { background-repeat:repeat-x; }
+.bg-repeat-y { background-repeat:repeat-y; }
+.bg-no-repeat { background-repeat:no-repeat; }
+
+/* --- background position ---------------------- */
+.bg-pos-l-t { background-position:left top; }
+.bg-pos-l-c { background-position:left center; }
+.bg-pos-l-b { background-position:left bottom; }
+
+.bg-pos-r-t { background-position:right top; }
+.bg-pos-r-c { background-position:right center; }
+.bg-pos-r-b { background-position:right bottom; }
+
+.bg-pos-c-t { background-position:center top; }
+.bg-pos-c-c { background-position:center center; }
+.bg-pos-c-b { background-position:center bottom; }
+
+/* --- Layouts --------------------- */
+/* Positions ------------------------------------- */
+.abs { position:absolute; }
+.rel { position:relative; }
+.fix { position:fixed; }
+
+.vrt-t { vertical-align:top; }
+.vrt-m { vertical-align:middle; }
+.vrt-b { vertical-align:bottom; }
+
+.flt-0 { float:none; }
+    .sm-flt-0 { @include breakpoint(small){ float:none; }}
+    .md-flt-0 { @include breakpoint(medium){ float:none; }}
+    .lg-flt-0 { @include breakpoint(large){ float:none; }}
+
+.flt-l { float:left; }
+    .sm-flt-l { @include breakpoint(small){ float:left; }}
+    .md-flt-l { @include breakpoint(medium){ float:left; }}
+    .lg-flt-l { @include breakpoint(large){ float:left; }}
+
+.flt-r { float:right; }
+    .sm-flt-r { @include breakpoint(small){ float:right; }}
+    .md-flt-r { @include breakpoint(medium){ float:right; }}
+    .lg-flt-r { @include breakpoint(large){ float:right; }}
+
+.clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after { clear: both; }
+}
+    
+/* --- POSITION Top Bottom Right Left .p-t-# .p-b-# .p-r-# .p-l-# --------------------- */
+    @each $hxw-size in $hxw-sizes { $num: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+        .top-#{$num} { top:$size; }
+        .btm-#{$num} { bottom:$size; }
+        .rght-#{$num} { right:$size; }
+        .lft-#{$num} { left:$size; }
+    }
+    
+    @include breakpoint(small){
+        $break: sm;
+        @each $hxw-size in $hxw-sizes { $num: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-top-#{$num} { top:$size; }
+            .#{$break}-btm-#{$num} { bottom:$size; }
+            .#{$break}-rght-#{$num} { right:$size; }
+            .#{$break}-lft-#{$num} { left:$size; }
+        }
+    }
+    
+    @include breakpoint(medium){
+        $break: md;
+        @each $hxw-size in $hxw-sizes { $num: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-top-#{$num} { top:$size; }
+            .#{$break}-btm-#{$num} { bottom:$size; }
+            .#{$break}-rght-#{$num} { right:$size; }
+            .#{$break}-lft-#{$num} { left:$size; }
+        }
+    }
+    
+    @include breakpoint(large){
+        $break: lg;
+        @each $hxw-size in $hxw-sizes { $num: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-top-#{$num} { top:$size; }
+            .#{$break}-btm-#{$num} { bottom:$size; }
+            .#{$break}-rght-#{$num} { right:$size; }
+            .#{$break}-lft-#{$num} { left:$size; }
+        }
+    }
+    
+/* Z-INDEX -------------------------------------*/
+    .z-min10 { z-index:-10; }
+    .z-0 { z-index:0; }
+    .z-10 { z-index:10; }
+    .z-20 { z-index:20; }
+    .z-30 { z-index:30; }
+    .z-40 { z-index:40; }
+    .z-50 { z-index:50; }
+    .z-60 { z-index:60; }
+    .z-70 { z-index:70; }
+    .z-80 { z-index:80; }
+    .z-90 { z-index:90; }
+    .z-100 { z-index:100; }
+    .z-1000 { z-index:1000; }
+    .z-2000 { z-index:2000; }
+
+/* Box-sizing -------------------------------------  */
+    .box-bdr { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+    
+/* Display -------------------------------------  */
+/*    .# .sm-# .md-# .lg-#   */
+    @include display('in-bl', inline-block);
+    @include display('in', inline);
+    @include display('bl', block);
+    @include display('in-tbl', inline-table);
+    @include display('tbl', table);
+    @include display('tbl-cl', table-cell);
+    @include display('none', none);
+
+/* Overflows -------------------------------------  */
+    .of-auto { overflow:auto; }
+    .of-vis { overflow:visible; }
+    .of-hid { overflow: hidden; }
+    .of-y-auto { overflow-y: auto; }
+    .of-x-auto { overflow-x: auto; }
+    .of-y-scr { overflow-y: scroll; }
+    .of-x-scr { overflow-x: scroll; }
+
+/* WIDTHs --- .w-# .sm-w-# .md-w-# .lg-w-# ---------------------------------------------
+++ HEIGHTs --- .h-# .sm-h-# .md-h-# .lg-h-# -------------------------------------------- */
+
+// Sizes in the _variables.scss
+
+    /* Heights ---------------- */
+    @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+        .h-#{$name} { height:$size; }    
+        .min-h-#{$name} { min-height:$size; }
+        .max-h-#{$name} { max-height:$size; }
+    }
+    /* Widths ---------------- */
+    @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+        .w-#{$name} { width:$size; }
+        .min-w-#{$name} { min-width:$size; }
+        .max-w-#{$name} { max-width:$size; }
+    }
+
+/* BREAKPOINT SMALL ---------------------------------------------------------------- */
+    @include breakpoint(small){
+        $break: sm;
+        // Height
+        @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-h-#{$name} { height:$size; }    
+            .#{$break}-min-h-#{$name} { min-height:$size; }
+            .#{$break}-max-h-#{$name} { max-height:$size; }
+        }
+        // Width
+        @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-w-#{$name} { width:$size; }
+            .#{$break}-min-w-#{$name} { min-width:$size; }
+            .#{$break}-max-w-#{$name} { max-width:$size; }
+        }
+    }
+
+/* BREAKPOINT Medium ---------------------------------------------------------------- */
+    @include breakpoint(medium){
+        $break: md;
+        // Height
+        @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-h-#{$name} { height:$size; }    
+            .#{$break}-min-h-#{$name} { min-height:$size; }
+            .#{$break}-max-h-#{$name} { max-height:$size; }
+        }
+        // Width
+        @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-w-#{$name} { width:$size; }
+            .#{$break}-min-w-#{$name} { min-width:$size; }
+            .#{$break}-max-w-#{$name} { max-width:$size; }
+        }
+    }
+
+/* BREAKPOINT Large ---------------------------------------------------------------- */
+    @include breakpoint(large){
+        $break: lg;
+        // Height
+        @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-h-#{$name} { height:$size; }    
+            .#{$break}-min-h-#{$name} { min-height:$size; }
+            .#{$break}-max-h-#{$name} { max-height:$size; }
+        }
+        // Width
+        @each $hxw-size in $hxw-sizes { $name: nth($hxw-size, 1); $size: nth($hxw-size, 2);
+            .#{$break}-w-#{$name} { width:$size; }
+            .#{$break}-min-w-#{$name} { min-width:$size; }
+            .#{$break}-max-w-#{$name} { max-width:$size; }
+        }
+    }
+
+
+/* MARGINs --- .mn-t-r-b-l-#  ----------------------------------------------------
+++ PADDINGs --- .pd-t-r-b-l-#  ------------------------------------------------ */
+    
+// Sizes in the _variables.scss
+
+    /* --- PADDING ---------------------------*/
+    @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+        .pd-#{$num} { padding:$size; }
+        .pd-t-b-#{$num} { padding-top:$size; padding-bottom:$size; }
+        .pd-l-r-#{$num} { padding-left:$size; padding-right:$size; }
+        .pd-t-#{$num} { padding-top:$size; }
+        .pd-r-#{$num} { padding-right:$size; }
+        .pd-b-#{$num} { padding-bottom:$size; }
+        .pd-l-#{$num} { padding-left:$size; }
+    }
+    /* --- Margin ---------------------------*/
+    @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+        .mn-#{$num} { margin:$size; }
+        .mn-t-b-#{$num} { margin-top:$size; margin-bottom:$size; }
+        .mn-l-r-#{$num} { margin-left:$size; margin-right:$size; }
+        .mn-t-#{$num} { margin-top:$size; }
+        .mn-r-#{$num} { margin-right:$size; }
+        .mn-b-#{$num} { margin-bottom:$size; }
+        .mn-l-#{$num} { margin-left:$size; }
+    }
+    
+/* BREAKPOINT SMALL ---------------------------------------------------------------- */
+    @include breakpoint(small){
+        $break: sm;
+        /* --- PADDING ---------------------------*/
+        @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+            .#{$break}-pd-#{$num} { padding:$size; }
+            .#{$break}-pd-t-b-#{$num} { padding-top:$size; padding-bottom:$size; }
+            .#{$break}-pd-l-r-#{$num} { padding-left:$size; padding-right:$size; }
+            .#{$break}-pd-t-#{$num} { padding-top:$size; }
+            .#{$break}-pd-r-#{$num} { padding-right:$size; }
+            .#{$break}-pd-b-#{$num} { padding-bottom:$size; }
+            .#{$break}-pd-l-#{$num} { padding-left:$size; }
+        }
+        /* --- Margin ---------------------------*/
+        @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+            .#{$break}-mn-#{$num} { margin:$size; }
+            .#{$break}-mn-t-b-#{$num} { margin-top:$size; margin-bottom:$size; }
+            .#{$break}-mn-l-r-#{$num} { margin-left:$size; margin-right:$size; }
+            .#{$break}-mn-t-#{$num} { margin-top:$size; }
+            .#{$break}-mn-r-#{$num} { margin-right:$size; }
+            .#{$break}-mn-b-#{$num} { margin-bottom:$size; }
+            .#{$break}-mn-l-#{$num} { margin-left:$size; }
+        }
+    }
+
+/* BREAKPOINT Medium ---------------------------------------------------------------- */
+    @include breakpoint(medium){
+        $break: md;
+        /* --- PADDING ---------------------------*/
+        @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+            .#{$break}-pd-#{$num} { padding:$size; }
+            .#{$break}-pd-t-b-#{$num} { padding-top:$size; padding-bottom:$size; }
+            .#{$break}-pd-l-r-#{$num} { padding-left:$size; padding-right:$size; }
+            .#{$break}-pd-t-#{$num} { padding-top:$size; }
+            .#{$break}-pd-r-#{$num} { padding-right:$size; }
+            .#{$break}-pd-b-#{$num} { padding-bottom:$size; }
+            .#{$break}-pd-l-#{$num} { padding-left:$size; }
+        }
+        /* --- Margin ---------------------------*/
+        @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+            .#{$break}-mn-#{$num} { margin:$size; }
+            .#{$break}-mn-t-b-#{$num} { margin-top:$size; margin-bottom:$size; }
+            .#{$break}-mn-l-r-#{$num} { margin-left:$size; margin-right:$size; }
+            .#{$break}-mn-t-#{$num} { margin-top:$size; }
+            .#{$break}-mn-r-#{$num} { margin-right:$size; }
+            .#{$break}-mn-b-#{$num} { margin-bottom:$size; }
+            .#{$break}-mn-l-#{$num} { margin-left:$size; }
+        }
+    }
+    
+/* BREAKPOINT Large ---------------------------------------------------------------- */
+    @include breakpoint(large){
+        $break: lg;
+        /* --- PADDING ---------------------------*/
+        @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+            .#{$break}-pd-#{$num} { padding:$size; }
+            .#{$break}-pd-t-b-#{$num} { padding-top:$size; padding-bottom:$size; }
+            .#{$break}-pd-l-r-#{$num} { padding-left:$size; padding-right:$size; }
+            .#{$break}-pd-t-#{$num} { padding-top:$size; }
+            .#{$break}-pd-r-#{$num} { padding-right:$size; }
+            .#{$break}-pd-b-#{$num} { padding-bottom:$size; }
+            .#{$break}-pd-l-#{$num} { padding-left:$size; }
+        }
+        /* --- Margin ---------------------------*/
+        @each $pdxmn-size in $pdxmn-sizes { $num: nth($pdxmn-size, 1); $size: nth($pdxmn-size, 2);
+            .#{$break}-mn-#{$num} { margin:$size; }
+            .#{$break}-mn-t-b-#{$num} { margin-top:$size; margin-bottom:$size; }
+            .#{$break}-mn-l-r-#{$num} { margin-left:$size; margin-right:$size; }
+            .#{$break}-mn-t-#{$num} { margin-top:$size; }
+            .#{$break}-mn-r-#{$num} { margin-right:$size; }
+            .#{$break}-mn-b-#{$num} { margin-bottom:$size; }
+            .#{$break}-mn-l-#{$num} { margin-left:$size; }
+        }
+    }
+        
+/* Scale --- .scl-# .sm-scl-# .md-scl-# .lg-scl-#  --------------------- */
+    @include scale(100, 1);
+    @include scale(75, 0.75);
+    @include scale(60, 0.6);
+    @include scale(50, 0.5);
+    @include scale(40, 0.4);
+    @include scale(33, 0.33);
+    @include scale(25, 0.25);
+    @include scale(20, 0.20);
+    @include scale(10, 0.10);            
+
+/* Lists --------------------- */
+    .list-0 { list-style:none; }        
+
+/* Borders ---------------------------------------------------------------------------
+-------------------------------------------------------------------------------------- */
+    .bdr-solid { border-style:solid; }
+    .bdr-dash { border-style:dashed; }
+    .bdr-dotted { border-style:dotted; }
+
+/* Border sizes -----------------------------------------------------------------------
+--- .bdr-# | top - .bdr-t-# | bottom - .bdr-b-# | left - .bdr-l-# | right - .bdr-r-# ----------- 
+Border Radius -----------------------------------------------------------------------
+--- .bdr-rad-# | topleft - .bdr-rad-tl-# | topright - .bdr-rad-tr-# | bottomleft - .bdr-rad-bl-# | bottomright - .bdr-rad-bl-# ----- */
+    .bdr-0 { border:0;}
+    @each $bdr-size in $bdr-sizes { $name: nth($bdr-size, 1); $size: nth($bdr-size, 2);
+        .bdr-#{$name} { border-width:$size; }
+        .bdr-t-#{$name} { border-top-width:$size; }
+        .bdr-b-#{$name} { border-bottom-width:$size; }
+        .bdr-l-#{$name} { border-left-width:$size; }
+        .bdr-r-#{$name} { border-right-width:$size; }
+                
+        .bdr-rad-#{$name} { border-radius: $size; -webkit-border-radius: $size; -moz-border-radius: $size;}
+        .bdr-rad-tl-#{$name} { border-top-left-radius: $size; -webkit-border-top-left-radius: $size; -moz-border-radius-topleft: $size; }
+        .bdr-rad-tr-#{$name} { border-top-right-radius: $size; -webkit-border-top-right-radius: $size; -moz-border-radius-topright: $size; }
+        .bdr-rad-br-#{$name} { border-bottom-right-radius: $size; -webkit-border-bottom-right-radius: $size; -moz-border-radius-bottomright: $size; }
+        .bdr-rad-bl-#{$name} { border-bottom-left-radius: $size; -webkit-border-bottom-left-radius: $size; -moz-border-radius-bottomleft: $size; }
+    }
+    
+    
+    
+/*-- Shadows */
+    .shdw-subtle { @include box-shadow(0px 1px 2px 0px rgba(0,0,0,0.07)); }

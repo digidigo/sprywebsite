@@ -1,0 +1,46 @@
+/* --- Use your Inferior Inherited CSS here! or if you need it for markdown files --- */
+.bg-wave:after {
+    background-image: url(../img/waves.png);
+    background-repeat: repeat-x;
+    position: absolute;
+    top: -20px;
+    z-index: 0;
+    content: "";
+    width: 100%;
+    height: 22px;
+}
+
+.bg-phone { background-image: url(../img/device-phone.gif); background-repeat: no-repeat; }
+.sm-bg-phone { @include breakpoint(small){ background-image: url(../img/device-phone.gif); background-repeat: no-repeat; }}
+.md-bg-phone { @include breakpoint(medium){ background-image: url(../img/device-phone.gif); background-repeat: no-repeat; }}
+.lg-bg-phone { @include breakpoint(large){ background-image: url(../img/device-phone.gif); background-repeat: no-repeat; }}
+
+.bg-tablet { background-image: url(../img/device-phone.gif), url(../img/device-tablet.gif); background-repeat: no-repeat; background-position: 68% bottom, 54em 60%; }
+.sm-bg-tablet { @include breakpoint(small){ background-image: url(../img/device-phone.gif), url(../img/device-tablet.gif); background-repeat: no-repeat; background-position: 75% bottom, 54em 60%; }}
+.md-bg-tablet { @include breakpoint(medium){ background-image: url(../img/device-phone.gif), url(../img/device-tablet.gif); background-repeat: no-repeat; background-position: 68% bottom, 30em 60%;}}
+.lg-bg-tablet { @include breakpoint(large){ background-image: url(../img/device-phone.gif), url(../img/device-tablet.gif); background-repeat: no-repeat; background-position: 60% 50%, 1000px 60%;}}
+
+/*-- CSS Art */
+.arw-l {
+	width: 0; 
+	height: 0; 
+	border-top: 0.3em solid transparent;
+	border-bottom: 0.3em solid transparent; 
+	border-right:0.5em solid $red; 
+}
+a.arw-l { &:hover { border-right-color:$black; } }
+
+.arw-r {
+	width: 0; 
+	height: 0; 
+	border-top: 0.3em solid transparent;
+	border-bottom: 0.3em solid transparent; 
+	border-left:0.5em solid $red; 
+}
+a.arw-r { &:hover { border-left-color:$black; } }
+
+.inherit {
+    a { @extend .c-b-org; }
+    p, pre { @extend .mn-b-1em, .fs-18; }
+    pre { @extend .pd-1em;}
+}

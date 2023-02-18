@@ -1,0 +1,39 @@
+---
+layout: default
+title: 'Spry Elephants & Agile Development'
+
+hero_image: 'true'
+---
+<section class="txt-c pd-t-2em">
+    <article class="max-w-960px mn-l-r-auto pd-l-r-1em3 md-pd-t-3em">
+        <h1 class="f2 fs-28 md-fs-42 c-b-blk mn-b-0em5">Agile <span class="lin-strk">monkeys</span> Elephants</h1>
+        <p class="f2 fs-18 md-fs-26 c-b-md-gry mn-b-0em8 lead-1em4">expert senior talent, tailored specifically to meet your unique needs.</p>
+        <p class="fs-16 md-fs-22 lead-1em4 md-max-w-70 md-mn-b-2em in-bl">a powerful blend of onshore and offshore talent, a hand-picked team to maximize efficiency and effectiveness. Let us help you bring your vision to life with a team that's custom-fit for your unique requirements.
+        </p>
+        <hr class="mn-t-b-3em md-mn-t-b-4em bdr-0 h-1px bg-b-gry max-w-960px mn-l-r-auto"/>
+    </article>
+    <article class="md-bg-tablet lg-bg-tablet pd-l-r-1em3 md-pd-l-r-0">
+        <h2 class="f2 fs-26 md-fs-32 nrml c-b-blk mn-b-1em5">Projects we have launched</h2>
+        <ul class="list-0 bl md-pd-t-8em md-pd-b-9em w-100 max-w-960px mn-l-r-auto txt-l">
+            <li class="md-w-50 txt-c">Healthcare - a comprehensive data application that seamlessly integrated multiple streams of data from disparate sources into a single platform.</li>
+            <li class="md-w-50 txt-c" >Education/Growth - a mobile experience that empowers people to coach / guide and champion that growth of others </li>
+            <li class="md-w-50 txt-c">Restaurant - a web and mobile application for remote ordering and payment at restaurants.</li>
+            <li class="md-w-50 txt-c">Blockchain - a platform for generative artists to create, sell, and distribute their work.</li>
+        </ul>
+    </article>
+    {% if site.posts != empty %}
+    <article id="posts" class="max-w-960px mn-l-r-auto pd-l-r-1em3">
+        <hr class="mn-b-3em md-mn-t-b-4em bdr-t-0 bdr-l-0 bdr-r-0 bdr-b-1 bdr-c-b-gry bdr-solid h-130px md-h-0 bg-phone bg-pos-c-t max-w-960px mn-l-r-auto"/>
+        <h2 class="f2 fs-26 md-fs-32 nrml c-b-blk mn-b-1em5 md-mn-b-2em">Some of the things we talk about.</h2>
+      <ul class="posts list-0">
+        {% for post in site.posts limit:3 %}
+          <li class="in-bl w-80 md-w-28 md-mn-l-r-2">
+              <a class="f2 fs-22 nrml c-b-org mn-b-0em8 bl" href="{{ post.url }}">{{ post.title }}</a>
+              <p class="fs-16 lead-1em4 mn-b-2em4 md-mn-b-3em4 in-bl">{{ post.excerpt | strip_html }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+      <a class="f2 fs-16 in-bl bdr-1 bdr-solid bdr-c-b-org bdr-rad-5 pd-t-b-1em3 pd-l-r-3em c-b-org" href="{{ site.baseurl }}blog">Read more posts</a>
+    </article>    
+    {% endif %}
+</section>

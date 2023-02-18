@@ -1,0 +1,16 @@
+---
+layout: default
+title: 'Spry Elephants & Agile Development'
+---
+<section class="txt-c pd-t-2em pd-l-r-1em3 max-w-960px mn-l-r-auto">
+    <article id="posts" class="">
+        <h2 class="f2 fs-26 nrml c-b-blk mn-b-1em5">All the things we talk about.</h2>
+      <ul class="posts list-0">
+        {% for post in site.posts %}
+          <li><a class="f2 fs-22 nrml c-b-org mn-b-0em8 in-bl" href="{{ post.url }}">{{ post.title }}</a>
+              <p class="fs-16 lead-1em4 mn-b-2em4">{{ post.content | strip_html | truncatewords:30}}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </article>    
+</section>

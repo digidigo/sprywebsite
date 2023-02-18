@@ -1,0 +1,3 @@
+<ul class="mn-0 pd-0">
+{% for post in site.posts %}{% if post.type != 'page' %}<li class="in-bl list-0"><a class="c-red lead-1x4" href="{{ post.url }}">{{ post.title }}{% unless forloop.last %},{% endunless %}</a>&nbsp;</li>{% endif %}{% endfor %}
+</ul>

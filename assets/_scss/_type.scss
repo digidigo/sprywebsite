@@ -1,0 +1,52 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Montserrat:400,700);
+
+$font-1: "proxima-nova",sans-serif;
+$font-2: 'Montserrat', sans-serif;
+$font-3: 'Montserrat Alternates', sans-serif;
+/* ---------- Type ----------------- */
+.f1 { font-family:$font-1; }
+.f2 { font-family:$font-2; }
+.f3 { font-family:$font-3; }
+
+.caps { text-transform:uppercase; }
+.nrml { font-weight:400; }
+.bld { font-weight:800; }
+
+.no-dec { text-decoration:none; }
+
+.trk-0em05 { letter-spacing:0.05em; }
+
+/* Align --- .txt-# .sm-txt-# .md-txt-# .lg-txt-#  */
+    @include text-align(c, center);
+    @include text-align(r, right);
+    @include text-align(l, left);
+    @include text-align(j, justify);
+    
+    
+/* TEXT DECORATION ---------------------------- */
+    .lin-non {text-decoration:none;}
+    .lin-undr {text-decoration:underline;}
+    .lin-ovr {text-decoration:overline;}
+    .lin-strk {text-decoration:line-through;}
+        
+/*  Fonts ------------------------------------------------------ .fs-#
+    Leading ---------------------------------------------------- .ld-# */
+    @each $font-size in $font-sizes { $name: nth($font-size, 1); $size: nth($font-size, 2);
+        .fs-#{$name} { font-size:$size; }
+        .lead-#{$name} { line-height:$size; }    
+    }
+
+    @each $font-size in $font-sizes { $name: nth($font-size, 1); $size: nth($font-size, 2);
+        .sm-fs-#{$name} { @include breakpoint(small){ font-size:$size; }}
+        .sm-lead-#{$name} { @include breakpoint(small){ line-height:$size; }}
+    }
+    
+    @each $font-size in $font-sizes { $name: nth($font-size, 1); $size: nth($font-size, 2);
+        .md-fs-#{$name} { @include breakpoint(medium){ font-size:$size; }}
+        .md-lead-#{$name} { @include breakpoint(medium){ line-height:$size; }}
+    }
+    
+    @each $font-size in $font-sizes { $name: nth($font-size, 1); $size: nth($font-size, 2);
+        .lg-fs-#{$name} { @include breakpoint(large){ font-size:$size; }}
+        .lg-lead-#{$name} { @include breakpoint(large){ line-height:$size; }}
+    }
