@@ -16,7 +16,7 @@ textile_ext:   textile
 highlighter: pygments
 
 # url: http://jeffreylarrimore.com
-baseurl: /sprywebsite/
+baseurl: /
 assets: assets/
 relative_permalinks: false
 permalink: pretty
